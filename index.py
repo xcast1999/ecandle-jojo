@@ -38,7 +38,7 @@ def getWord(term,hint):
 
 	url = f"https://reversedictionary.org/api/related?term={term}"
 
-	fetch = req.get(url).json()[:20]
+	fetch = req.get(url).json()#[:50]
 
 	result = matchWord(hint,fetch)
 
