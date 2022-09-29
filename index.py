@@ -16,17 +16,23 @@ def matchWord(hint,words):
 
 	result = None
 
-	for w in words:
-		
-		if sorted(hint.lower()) == sorted(w['word'].lower()):
+	if len(words) != 0 :
 
-			result = {"result":True,"word":w['word'].upper()}
+		for w in words:
 
-			break
-		
-		else:
+			if sorted(hint.lower()) == sorted(w['word'].lower()):
 
-			result = {"result":False,"word":"None"}
+				result = {"result":True,"word":w['word'].upper()}
+
+				break
+			
+			else:
+
+				result = {"result":False,"word":"None"}
+
+	else:
+
+		result = {"result":False,"word":"None"}
 
 	return result
 
@@ -34,6 +40,7 @@ def matchWord(hint,words):
 @app.route("/getWord/<term>/<hint>")
 def getWord(term,hint):
   
+
 	term = term.replace(" ","%20")
 
 	url = f"https://reversedictionary.org/api/related?term={term}"
