@@ -17,8 +17,8 @@ def matchWord(hint,words):
 	result = None
 
 	for w in words:
-
-		if set(hint.lower()).issubset(set(w['word'].lower())):
+		
+		if sorted(hint.lower()) == sorted(w['word'].lower()):
 
 			result = {"result":True,"word":w['word'].upper()}
 
