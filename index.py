@@ -28,11 +28,27 @@ def matchWord(hint,words):
 			
 			else:
 
-				result = {"result":False,"word":"None"}
+				result = anagramica(hint)
 
 	else:
 
 		result = {"result":False,"word":"None"}
+
+	return result
+
+def anagramica(hint):
+
+	url = f"http://www.anagramica.com/all/{hint}"
+
+	fetch = req.get(url).json()
+
+	word = fetch['all'][0]
+
+	if len(word) == len(hint):
+		result = {"result":True,"word":word.upper()}
+	else:
+		result = {"result":False,"word":"None"}
+	
 
 	return result
 
@@ -43,11 +59,17 @@ def getWord(term,hint):
 
 	term = term.replace(" ","%20")
 
-	url = f"https://reversedictionary.org/api/related?term={term}"
+	if "NO MEANING" not in term:
 
-	fetch = req.get(url).json()#[:50]
+		url = f"https://reversedictionary.org/api/related?term={term}"
 
-	result = matchWord(hint,fetch)
+		fetch = req.get(url).json()#[:50]
+
+		result = matchWord(hint,fetch)
+
+	else:
+
+		result = anagramica(hint)
 
 	return jsonify(result)
 
