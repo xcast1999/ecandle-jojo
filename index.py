@@ -67,6 +67,10 @@ def getWord(term,hint):
 
 		result = matchWord(hint,fetch)
 
+	elif term == "":
+
+		result = {"result":False,"word":"None"}
+
 	else:
 
 		result = anagramica(hint)
