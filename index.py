@@ -67,9 +67,9 @@ def getWord(term,hint):
 
 		result = matchWord(hint,fetch)
 
-	elif term == "":
+	elif term == "" or term == " " or term == "%20":
 
-		result = {"result":False,"word":"None"}
+		result = {"result":True,"word":""}
 
 	else:
 
