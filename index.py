@@ -9,8 +9,10 @@ CORS(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    
-    return "Wkwkwkw", 404
+
+	result = {"result":False,"word":"None"}
+	
+	return jsonify(result), 404
 
 def matchWord(hint,words):
 
