@@ -57,8 +57,8 @@ def anagramica(hint):
 
 @app.route("/getWord/<term>/<hint>")
 def getWord(term,hint):
-  
-  t = term.replace("%"," ")
+
+	t = term.replace("%"," ")
 
 	term = t.replace(" ","%20")
 
