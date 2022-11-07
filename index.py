@@ -80,6 +80,18 @@ def getWord(term,hint):
 
 	return jsonify(result)
 
+@app.route("/verify/<user>/")
+def getWord(user):
+
+	users = json.load(open("users.json"))['users']
+
+	if user in users:
+		auth = True
+	else:
+		auth = False
+
+
+	return jsonify({"authorized":auth})
 
 @app.route("/")
 def hello_world():
