@@ -81,7 +81,7 @@ def getWord(term,hint):
 	return jsonify(result)
 
 @app.route("/verify/<user>/")
-def getWord(user):
+def verify(user):
 
 	users = json.load(open("users.json"))['users']
 
